@@ -1,0 +1,4 @@
+#include <stdio.h>
+#define MAX 50
+#define INF 99999
+int main(){int a[MAX][MAX],key[MAX],parent[MAX],vis[MAX]={0},v,i,j,u,min,total=0;printf("Enter number of vertices: ");scanf("%d",&v);printf("Enter weighted adjacency matrix (0 for no edge):\n");for(i=0;i<v;i++)for(j=0;j<v;j++)scanf("%d",&a[i][j]);for(i=0;i<v;i++){key[i]=INF;parent[i]=-1;}key[0]=0;for(i=0;i<v;i++){u=-1;min=INF;for(j=0;j<v;j++)if(!vis[j]&&key[j]<min){min=key[j];u=j;}if(u==-1)break;vis[u]=1;for(j=0;j<v;j++)if(a[u][j]>0&&!vis[j]&&a[u][j]<key[j]){key[j]=a[u][j];parent[j]=u;}}printf("Edges in Minimum Spanning Tree:\n");for(i=1;i<v;i++){printf("%d - %d : %d\n",parent[i],i,key[i]);total+=key[i];}printf("Minimum Cost = %d\n",total);return 0;}

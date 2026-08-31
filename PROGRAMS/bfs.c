@@ -1,0 +1,3 @@
+#include <stdio.h>
+#define MAX 50
+int main(){int a[MAX][MAX],v,q[MAX],vis[MAX]={0},front=0,rear=0,i,j,s;printf("Enter number of vertices: ");scanf("%d",&v);printf("Enter adjacency matrix:\n");for(i=0;i<v;i++)for(j=0;j<v;j++)scanf("%d",&a[i][j]);printf("Enter starting vertex: ");scanf("%d",&s);q[rear++]=s;vis[s]=1;printf("BFS Traversal:\n");while(front<rear){int u=q[front++];printf("%d ",u);for(i=0;i<v;i++)if(a[u][i]&&!vis[i]){vis[i]=1;q[rear++]=i;}}printf("\n");return 0;}

@@ -1,0 +1,4 @@
+#include <stdio.h>
+#define MAX 50
+#define INF 99999
+int main(){int a[MAX][MAX],d[MAX],vis[MAX]={0},v,i,j,s,u,min;printf("Enter number of vertices: ");scanf("%d",&v);printf("Enter weighted adjacency matrix (0 for no edge):\n");for(i=0;i<v;i++)for(j=0;j<v;j++)scanf("%d",&a[i][j]);printf("Enter source vertex: ");scanf("%d",&s);for(i=0;i<v;i++)d[i]=INF;d[s]=0;for(i=0;i<v;i++){u=-1;min=INF;for(j=0;j<v;j++)if(!vis[j]&&d[j]<min){min=d[j];u=j;}if(u==-1)break;vis[u]=1;for(j=0;j<v;j++)if(a[u][j]>0&&!vis[j]&&d[u]+a[u][j]<d[j])d[j]=d[u]+a[u][j];}printf("Shortest distances from %d:\n",s);for(i=0;i<v;i++)printf("Vertex %d : %d\n",i,d[i]);return 0;}
